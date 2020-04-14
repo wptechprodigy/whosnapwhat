@@ -7,7 +7,7 @@ import ImageSearch from './components/ImageSearch';
 function App() {
 	const [images, setImages] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
-	const [term, setTerm] = useState('');
+	const [term, setTerm] = useState('computers');
 	const [isError, setIsError] = useState(false);
 
 	useEffect(() => {
@@ -21,12 +21,11 @@ function App() {
 				);
 
 				setImages(result.data.hits);
+				setIsLoading(false);
 			} catch (error) {
 				setIsError(true);
 			}
 		};
-
-		setIsLoading(false);
 
 		fetchImage();
 	}, [term]);
@@ -34,13 +33,22 @@ function App() {
 	return (
 		<div className='container mx-auto my-10'>
 			<ImageSearch searchTerm={(text) => setTerm(text)} />
+
 			{isError && <DisplayError message='Something went wrong.' />}
+
+			{!isLoading && images.length === 0 && (
+				<h1 className='text-center text-gray-700 text-6xl my-10'>
+					No Images Found.
+				</h1>
+			)}
 
 			{isLoading ? (
 				isError ? (
 					''
 				) : (
-					<h1 className='text-center text-gray-700 text-6xl my-10'>Loading...</h1>
+					<h1 className='text-center text-gray-700 text-6xl my-10'>
+						Loading...
+					</h1>
 				)
 			) : (
 				<div className='flex flex-col justify-center items-center md:justify-center md:grid md:grid-cols-2 md:gap-4 lg:grid lg:grid-cols-3 lg:gap-4 place-items-center'>
