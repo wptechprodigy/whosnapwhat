@@ -6,3 +6,5 @@
 
 /* This injects all of Tailwind’s utility classes(including the default and your own utilities) they are generated based on our config file. */
 @import 'tailwindcss/utilities';
+
+@import './custom-utilities.css';
