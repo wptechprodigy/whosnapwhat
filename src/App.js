@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ImageCard from './components/ImageCard';
 import DisplayError from './components/DisplayError';
+import ImageSearch from './components/ImageSearch';
 
 function App() {
 	const [images, setImages] = useState([]);
@@ -32,10 +33,15 @@ function App() {
 
 	return (
 		<div className='container mx-auto my-10'>
+			<ImageSearch searchTerm={(text) => setTerm(text)} />
 			{isError && <DisplayError message='Something went wrong.' />}
 
 			{isLoading ? (
-				<h1 className='text-center text-gray-700 text-6xl'>Loading...</h1>
+				isError ? (
+					''
+				) : (
+					<h1 className='text-center text-gray-700 text-6xl my-10'>Loading...</h1>
+				)
 			) : (
 				<div className='flex flex-col justify-center items-center md:justify-center md:grid md:grid-cols-2 md:gap-4 lg:grid lg:grid-cols-3 lg:gap-4 place-items-center'>
 					{images.map((image) => (
