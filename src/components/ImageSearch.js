@@ -11,6 +11,7 @@ function ImageSearch({ searchTerm }) {
     searchTerm(text);
 
     e.preventDefault();
+    setText('');
   };
 
 	return (
