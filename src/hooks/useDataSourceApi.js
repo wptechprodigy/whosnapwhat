@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const usePixabayApi = (initialState, initialTerm) => {
+const useDataSourceApi = (initialState, initialTerm) => {
 	const [images, setImages] = useState(initialState);
 	const [isLoading, setIsLoading] = useState(false);
 	const [isError, setIsError] = useState(false);
@@ -30,4 +30,4 @@ const usePixabayApi = (initialState, initialTerm) => {
 	return [{ images, isLoading, isError, term }, setTerm];
 };
 
-export default usePixabayApi;
+export default useDataSourceApi;
