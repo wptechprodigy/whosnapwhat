@@ -3,10 +3,10 @@ import ImageCard from './components/ImageCard';
 import DisplayError from './components/DisplayError';
 import ImageSearch from './components/ImageSearch';
 import Navigation from './components/Navigation';
-import usePixabayApi from './hooks/usePixabayApi';
+import useDataSourceApi from './hooks/useDataSourceApi';
 
 function App() {
-	const [{ images, isLoading, isError, term }, setTerm] = usePixabayApi();
+	const [{ images, isLoading, isError, term }, setTerm] = useDataSourceApi([], 'computers');
 
 	return (
 		<>
